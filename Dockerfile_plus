@@ -1,0 +1,12 @@
+FROM python:3.9.17-slim-bullseye
+LABEL maintainer "doyoon0601 <doyoon0601@gmail.com>"
+
+ENV LIBPATH = './lib'
+
+WORKDIR /app
+COPY ./lib/plus.py ./lib/
+COPY ./infer/inferplus.py ./infer/
+RUN pip3 install flask
+
+ENTRYPOINT ["python3"]
+CMD ["infer/inferplus.py"]
